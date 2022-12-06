@@ -1,4 +1,4 @@
-# undefined
+# Scrappers
 
 ## Table of Contents
 
@@ -9,7 +9,7 @@
 
 ## About <a name = "about"></a>
 
-Implementation of data extrection pipeline using scrappers.
+Implementation of data extrection pipeline using scrappers. Containing Scrapper for different use-case and different implementations.
 
 ## Getting Started <a name = "getting_started"></a>
 
