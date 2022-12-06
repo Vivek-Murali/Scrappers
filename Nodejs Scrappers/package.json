@@ -1,0 +1,10 @@
+{
+    "dependencies": {
+        "axios": "^1.2.0",
+        "cheerio": "^1.0.0-rc.12",
+        "json": "^11.0.0",
+        "kitsu": "^10.0.0-alpha.23",
+        "puppeteer": "^19.3.0",
+        "superagent": "^8.0.5"
+    }
+}
