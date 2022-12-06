@@ -1,10 +1,12 @@
 const puppeteer = require('puppeteer')
 const https = require('https')
 const json = require('json')
-const path = require('path')
+//const path = require('path')
 const axios = require('axios')
 const cheerio = require('cheerio')
-const kitsu = require('kitsu')
+//const kitsu = require('kitsu')
+
+const { KafkaConfig } = require('./common/cls.js')
 
 
 const getPostTitles = async () => {
@@ -18,7 +20,7 @@ const getPostTitles = async () => {
 
 		$('div.di-ib > h3 > a').each((_idx, el) => {
 			const postTitle = $(el).text()
-			postTitles.push(postTitle)
+			postTitles.push({value:postTitle})
 		});
 
 		return postTitles;
@@ -84,8 +86,19 @@ async function main() {
         await browser.close();
     }
 //main();
-getVisual();
-getPostAnalysisTitles()
-    .then((postTitles) => console.log(postTitles));
-getPostTitles()
-    .then((postTitles) => console.log(postTitles));
+//getVisual();
+//getPostAnalysisTitles().then((postTitles) => console.log(postTitles));
+
+/* const kafka = async function(){
+	const kfc = new KafkaConfig();
+	getPostTitles().then((postTitles) => kfc.producer("AnimeList", postTitles));
+	const results = await kfc.consumer("AnimeList");
+}
+console.log(kafka().then(vars)); */
+
+
+const kafka = new KafkaConfig();
+getPostTitles().then((postTitles) => kafka.producer("AnimeList", postTitles));
+kafka.consumer("AnimeList").then(data => console.log(data));
+
+

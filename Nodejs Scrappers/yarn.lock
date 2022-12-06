@@ -301,6 +301,11 @@ domutils@^3.0.1:
     domelementtype "^2.3.0"
     domhandler "^5.0.1"
 
+dotenv@^16.0.3:
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
+  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
+
 end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
@@ -500,6 +505,11 @@ json@^11.0.0:
   version "11.0.0"
   resolved "https://registry.yarnpkg.com/json/-/json-11.0.0.tgz#2e84493134e2f42c131165aa22a124df38b3a3ee"
   integrity sha512-N/ITv3Yw9Za8cGxuQqSqrq6RHnlaHWZkAFavcfpH/R52522c26EbihMxnY7A1chxfXJ4d+cEFIsyTgfi9GihrA==
+
+kafkajs@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/kafkajs/-/kafkajs-2.2.3.tgz#a1ab1b7c4a27699871a89b3978b5cfe5b05c6f3e"
+  integrity sha512-JmzIiLHE/TdQ7b4I2B/DNMtfhTh66fmEaEg7gGkyQXBC6f1A7I2jSjeUsVIJfC8d9YcEIURyBjtOEKBO5OHVhg==
 
 kitsu-core@^10.0.4:
   version "10.0.4"
