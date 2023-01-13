@@ -1,5 +1,6 @@
 import abc
 from typing import (Any, String, Optional, List, Dict)
+from functools import wraps
 
 class FrameWork(metaclass=abc.ABCMeta):
     def __init__(self) -> None:

@@ -2,11 +2,16 @@
     "dependencies": {
         "axios": "^1.2.0",
         "cheerio": "^1.0.0-rc.12",
+        "crawler": "^1.4.0",
         "dotenv": "^16.0.3",
         "json": "^11.0.0",
         "kafkajs": "^2.2.3",
         "kitsu": "^10.0.0-alpha.23",
         "puppeteer": "^19.3.0",
-        "superagent": "^8.0.5"
+        "request": "^2.88.2",
+        "robots-txt-parser": "^2.0.3",
+        "sitemap-generator": "^8.5.1",
+        "superagent": "^8.0.5",
+        "url-parse": "^1.5.10"
     }
 }

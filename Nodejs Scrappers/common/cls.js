@@ -10,7 +10,6 @@ const kafka = new Kafka({
     brokers: [KAFKA_BOOTSTRAP_SERVER1, KAFKA_BOOTSTRAP_SERVER2],
   });
 
-console.log(KAFKA_BOOTSTRAP_SERVER1,KAFKA_BOOTSTRAP_SERVER2,ID);
 class KafkaConfig{
     constructor(){
         this.kafka = kafka;
