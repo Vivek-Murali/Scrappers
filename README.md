@@ -1,5 +1,12 @@
 # Scrappers Implementation List
 
+
+<div align="center">
+  <a href="https://github-readme-tech-stack.vercel.app/api/cards?theme=github_dark_green&lineCount=2&line1=node.js,node.js,0;typescript,typescript,0;express,express,61DAFB&line2=html5,html,0;react,react,0;tailwindcss,tailwind,0&title=This%20Project%27s%20Tech%20Stack">
+    <img  src="https://github-readme-tech-stack.vercel.app/api/cards?theme=github_dark_green&lineCount=2&line1=node.js,node.js,0;typescript,typescript,0;express,express,61DAFB&line2=html5,html,0;react,react,0;tailwindcss,tailwind,0&title=This%20Project%27s%20Tech%20Stack" title="Tech Stack">
+  </a>
+</div>
+
 ## Table of Contents
 
 - [About](#about)
