@@ -222,7 +222,7 @@ function crawlAllUrls(url) {
 
 //console.log(obselete)
 //main();
-getVisual();
+//getVisual();
 
 /* const generator = SitemapGenerator('https://www.3m.com/3M/en_US/sustainability-us', {
   stripQuerystring: false
@@ -235,18 +235,18 @@ generator.on('done', () => {
  
 // start the crawler
 generator.start(); */
-//getPostAnalysisTitles().then((postTitles) => console.log(postTitles));
+//getPostTitles().then((postTitles) => console.log(postTitles));
 
 /* const kafka = async function(){
 	const kfc = new KafkaConfig();
 	getPostTitles().then((postTitles) => kfc.producer("AnimeList", postTitles));
 	const results = await kfc.consumer("AnimeList");
-}
-console.log(kafka().then(vars)); */
+} */
+//console.log(kafka().then(vars)); 
 
 
-//const kafka = new KafkaConfig();
-//getPostTitles().then((postTitles) => kafka.producer("AnimeList", postTitles));
-//kafka.consumer("AnimeList").then(data => console.log(data));
+const kafka = new KafkaConfig();
+getPostTitles().then((postTitles) => kafka.producer("AnimeList", postTitles));
+kafka.consumer("AnimeList").then(data => console.log(data));
 
 //*[@id="ssnMenu"]/li[2]/a
