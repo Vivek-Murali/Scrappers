@@ -35,14 +35,19 @@ class MyamimelistSpider(CrawlSpider):
             else:
                 dicts[textualData[0].replace(":","")] =  textualData[1]  
                 
-        relations = []    
-        for item in response.xpath("//div[@id='myanimelist']/div[@class='wrapper valentine']/div[@id='contentWrapper']/div[@id='content']/table/tr/td[2]/div/table/tr[3]/td/table[@class='anime_detail_related_anime']/tr"):
-            data = {}
-            text_data = item.xpath("td[@class='ar fw-n borderClass']/text()").get()
-            data[text_data] = {item.xpath("td[@class='borderClass']/a/text()").get():item.xpath("td[@class='borderClass']/a/@href").get()}
-            relations.append(data)
-            
-        links = [{idxitem.xpath("a/text()").get().replace("More ",""):idxitem.xpath("a/@href").get()} for idxitem in response.xpath("//div[@id='myanimelist']/div[@class='wrapper valentine']/div[@id='contentWrapper']/div[@id='content']/table/tr/td[2]/div/table/tr[3]/td/div/div[@class='floatRightHeader']") if idxitem.xpath("a/text()").get() not in ignore]       
+        relations = [] 
+        try:   
+            for item in response.xpath("//div[@id='myanimelist']/div[@class='wrapper valentine']/div[@id='contentWrapper']/div[@id='content']/table/tr/td[2]/div/table/tr[3]/td/table[@class='anime_detail_related_anime']/tr"):
+                data = {}
+                text_data = item.xpath("td[@class='ar fw-n borderClass']/text()").get()
+                data[text_data] = {item.xpath("td[@class='borderClass']/a/text()").get():item.xpath("td[@class='borderClass']/a/@href").get()}
+                relations.append(data)
+        except:
+            pass
+        try:   
+            links = [{idxitem.xpath("a/text()").get().replace("More ",""):idxitem.xpath("a/@href").get()} for idxitem in response.xpath("//div[@id='myanimelist']/div[@class='wrapper valentine']/div[@id='contentWrapper']/div[@id='content']/table/tr/td[2]/div/table/tr[3]/td/div/div[@class='floatRightHeader']") if idxitem.xpath("a/text()").get() not in ignore]       
+        except Exception as e:
+            links = []
         opening = []
         for idx,idxitem in enumerate(response.xpath("//div[@id='myanimelist']/div[@class='wrapper valentine']/div[@id='contentWrapper']/div[@id='content']/table/tr/td[2]/div/table/tr[3]/td/div[@class='di-t']/div[@class='di-tc va-t ']/div[@class='theme-songs js-theme-songs opnening']/table/tr")):
             data = {}
