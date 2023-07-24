@@ -105,7 +105,7 @@ async function getVisualUpdated(url,saveData="") {
             
         }
         await browser.close();
-        const jsonData = JSON.stringify(filteredData, null, 2);
+        const jsonData = JSON.stringify(postTitles, null, 2);
         fs.writeFile(saveData, jsonData, (err) => {
             if (err) {
               console.error('Error writing to the file:', err);
