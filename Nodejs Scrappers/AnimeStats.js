@@ -50,5 +50,7 @@ async function getVisual(url) {
 		console.error(error)
 	}
 }
+
+
 getVisual("https://anime-stats.net/anime/all-anime/page/2");
 

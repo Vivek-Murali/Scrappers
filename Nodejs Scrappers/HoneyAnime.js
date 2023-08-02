@@ -50,6 +50,39 @@ async function getVisual(url) {
 	}
 }
 
+function appendDataToFile(filename, newData) {
+    // Read the existing data from the file
+    fs.readFile(filename, 'utf8', (err, data) => {
+      if (err) {
+        // If the file doesn't exist, start with an empty array
+        if (err.code === 'ENOENT') {
+          data = '[]';
+        } else {
+          console.error('Error reading file:', err);
+          return;
+        }
+      }
+  
+      // Parse the existing data as JSON
+      let existingData = JSON.parse(data);
+  
+      // Append the new data to the existing array
+      existingData.push(newData);
+  
+      // Convert the updated data to JSON string
+      const updatedDataJson = JSON.stringify(existingData, null, 2);
+  
+      // Write the updated data back to the file
+      fs.writeFile(filename, updatedDataJson, 'utf8', (err) => {
+        if (err) {
+          console.error('Error writing file:', err);
+          return;
+        }
+        console.log('Data appended and saved successfully!');
+      });
+    });
+}
+
 //Multiple Page Results
 async function getVisualUpdated(url,saveData="") {
     try {
@@ -59,13 +92,13 @@ async function getVisualUpdated(url,saveData="") {
         await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/79.0.3945.0 Safari/537.36');
         await page.goto(URL);
 
-        const postTitles = [];
+        //const postTitles = [];
 
         async function clickNextPage() {
             try {
-                await page.waitForSelector('li.pagination-no-num.next a', { timeout: 5000 });
+                await page.waitForSelector('li.pagination-no-num.next a', { timeout: 7000 });
                 await page.click('li.pagination-no-num.next a');
-                await page.waitForTimeout(2000);
+                await page.waitForTimeout(3000);
             } catch (error) {
                 console.log("No more next page button found.");
             }
@@ -94,25 +127,26 @@ async function getVisualUpdated(url,saveData="") {
                 pageTitles[idx] = dict;
             });
             const filteredData = pageTitles.filter(item => item.title.trim() !== '');
+            appendDataToFile(saveData, filteredData)
             if (filteredData.length === 0) {
                 console.log("No more posts foua.nextnd. Exiting loop.");
                 break;
             }
-            postTitles.concat(pageTitles)
+            console.log(filteredData)
+            //postTitles.concat(pageTitles)
             await clickNextPage(); // Click on the "Next Page" button.
             console.log("Page Done=>"+count.toString())
             count += 1;
-            
         }
         await browser.close();
-        const jsonData = JSON.stringify(postTitles, null, 2);
+        /* const jsonData = JSON.stringify(postTitles, null, 2);
         fs.writeFile(saveData, jsonData, (err) => {
             if (err) {
               console.error('Error writing to the file:', err);
             } else {
               console.log('Data has been written to the file successfully.');
             }
-          });
+          }); */
     } catch (error) {
         console.error(error);
     }
